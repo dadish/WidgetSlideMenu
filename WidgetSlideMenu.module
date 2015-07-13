@@ -1,0 +1,78 @@
+<?php
+
+/**
+ * WidgetSlideMenu - A slider menu.
+ *
+ *
+ */
+
+class WidgetSlideMenu extends Widget implements Module {
+
+  /**
+   * getModuleInfo is a module required by all modules to tell ProcessWire about them
+   *
+   * @return array
+   *
+   */
+  public static function getModuleInfo() {
+    return array(
+      'title' => 'Widget SlideMenu', 
+      'version' => 001, 
+      'summary' => _('A slider menu.'),
+      'icon' => 'cubes',
+      'requires' => array('Widgets')
+      );
+  }
+
+  public static function getDefaultSettings()
+  {
+    return array(
+      'include_selector' => '',
+      'text_field' => 'title',
+      'menu_level' => 3
+      );
+  }
+
+  public function setArray(array $arr)
+  {
+    parent::setArray($arr);
+    $settings = array_merge(self::getDefaultSettings(), $this->settings->getArray());
+    $this->settings->setArray($settings);
+  }
+
+  public function getSettingsFields($multipleRenders = false)
+  {
+    $fields = parent::getSettingsFields($multipleRenders);
+
+    $field = $this->modules->get('InputfieldText');
+    $field->name = 'include_selector';
+    $field->label = $this->_('Include Selector');
+    $field->attr('value', $this->settings->include_selector);
+    $field->description = $this->_('Write the selector that a page should pass to appear on the menu.');
+    $fields->add($field);
+
+    $field = $this->modules->get('InputfieldText');
+    $field->name = 'text_field';
+    $field->label = $this->_('Text Field');
+    $field->attr('value', $this->settings->text_field);
+    $field->description = $this->_('Which field should be used as a menu text.');
+    $fields->add($field);
+
+    $field = $this->modules->get('InputfieldInteger');
+    $field->name = 'menu_level';
+    $field->label = $this->_('Levels');
+    $field->attr('value', $this->settings->menu_level);
+    $field->description = $this->_('How many levels the menu should render?');
+    $fields->add($field);
+
+    return $fields;
+  }
+
+  public function processSettingsFields(InputfieldWrapper $settings)
+  {
+    parent::processSettingsFields($settings);
+
+    $this->settings->include_selector = $settings->get('include_selector')->value;
+    $this->settings->text_field = $settings->get('text_field')->value;
+  }
+}

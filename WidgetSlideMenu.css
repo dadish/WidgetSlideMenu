@@ -1,0 +1,89 @@
+
+.WidgetSlideMenu .m-l--w {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 3rem; 
+}
+
+.WidgetSlideMenu .m-l--w:after {
+  content: " ";
+  display: block;
+  clear: both; 
+}
+
+.WidgetSlideMenu .m-l {
+  position: absolute;
+  top: 0%;
+  left: 100%;
+  margin: 0rem;
+  padding: 0rem;
+  list-style: none;
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+  border : 1px solid #aaa;
+}
+
+.WidgetSlideMenu .m-l--a {
+  position: relative; 
+}
+
+.WidgetSlideMenu .m-i {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+  position: relative;
+  border: 1px solid #aaa;
+}
+
+.WidgetSlideMenu .m-i--a {
+  background-color: #17602d;
+}
+
+.WidgetSlideMenu .m-ia {
+  display: block;
+  padding: 1rem;
+  color: #333;
+  -webkit-transition: backgroung-color  30ms;
+  -moz-transition: backgroung-color  30ms;
+  -o-transition: backgroung-color  30ms;
+  transition: backgroung-color  30ms;
+  transition-property: backgroung-color ;
+  -moz-transition-property: backgroung-color ;
+  -webkit-transition-property: backgroung-color ;
+  -o-transition-property: backgroung-color ;
+  transition-timing-function: linear;
+  outline: 0; 
+}
+
+.WidgetSlideMenu .m-ia:visited {
+  color: #666; 
+}
+
+.WidgetSlideMenu .m-ia:hover {
+  background-color: #ddd;
+  color: #666; 
+}
+
+.WidgetSlideMenu .m-ia:focus, 
+.WidgetSlideMenu .m-ia:active, 
+.WidgetSlideMenu .m-ia:hover {
+  outline: 0; 
+}
+
+.WidgetSlideMenu .m-ia--left {
+  border-right: 1px solid #5ba471;
+  margin-right: 3rem; 
+}
+
+.WidgetSlideMenu .m-ia--next {
+  border-left: 1px solid #003e0b;
+  position: absolute;
+  width: 3rem;
+  top: 0;
+  right: 0;
+  bottom: 0; 
+}
