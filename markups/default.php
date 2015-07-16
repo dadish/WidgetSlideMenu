@@ -32,8 +32,8 @@ function render_menu(Page $root, $deep = 2, WireData $settings)
 
   foreach ($root->children('sort=sort, ' . $settings->include_selector) as $p) {
     $html .= "<li class='m-i ". (isActive($p) ? 'm-i--a' : '') ."' data-page-id='$p'>";
-    $html .= "<a class='m-ia ". ($p->children->count() ? "m-ia--left'" : "'") . (isActive($p) ? "" : "href='$p->url'") .">". $p->get($settings->text_field) ."</a>";
-    if ($p->children->count()) $html .= "<a class='m-ia m-ia--next ". (isChildActive($p) ? 'm-ia--a' : '') ."' href='$p->url'><i class='icon-right'></i></a>";
+    $html .= "<a class='m-ia ". ($p->children($settings->include_selector)->count() ? "m-ia--left'" : "'") . (isActive($p) ? "" : "href='$p->url'") .">". $p->get($settings->text_field) ."</a>";
+    if ($p->children($settings->include_selector)->count()) $html .= "<a class='m-ia m-ia--next ". (isChildActive($p) ? 'm-ia--a' : '') ."' href='$p->url'><i class='icon-right'></i></a>";
     $html .= "</li>";
   }
   $html .= "</ul>";
