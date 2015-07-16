@@ -1,5 +1,15 @@
 <?php
 
+function isActive(Page $p)
+{
+  return wire('page')->id === $p->id;
+}
+
+function isChildActive(Page $p)
+{
+  return (boolean) $p->find("id=" . wire('page'))->count();
+}
+
 function render_menu(Page $root, $deep = 2, WireData $settings)
 {
   $page = wire('page');
@@ -15,15 +25,15 @@ function render_menu(Page $root, $deep = 2, WireData $settings)
   // Add a current root item
   if ($root->id !== 1) {
   $p = $root->parent;
-  $html .= "<li class='m-i m-i--prev' data-page-id='$p'>";
-  $html .= "<a class='m-ia m-ia--prev' href='$p->url'><i class='icon-left'></i></a>";
+  $html .= "<li class='m-i m-i--prev ". (isActive($root) ? 'm-i--a' : '') ."' data-page-id='$p'>";
+  $html .= "<a class='m-ia m-ia--prev' href='$p->url'><i class='icon-left m-ii--prev'></i> <span class='m-ia--prev-txt'>". $root->get($settings->text_field) ."</span></a>";
   $html .= "</li>";
   }
 
   foreach ($root->children('sort=sort') as $p) {
     $html .= "<li class='m-i ". (isActive($p) ? 'm-i--a' : '') ."' data-page-id='$p'>";
     $html .= "<a class='m-ia ". ($p->children->count() ? "m-ia--left'" : "'") . (isActive($p) ? "" : "href='$p->url'") .">". $p->get($settings->text_field) ."</a>";
-    if ($p->children->count()) $html .= "<a class='m-ia m-ia--next' href='$p->url'><i class='icon-right'></i></a>";
+    if ($p->children->count()) $html .= "<a class='m-ia m-ia--next ". (isChildActive($p) ? 'm-ia--a' : '') ."' href='$p->url'><i class='icon-right'></i></a>";
     $html .= "</li>";
   }
   $html .= "</ul>";

@@ -39,8 +39,8 @@
   border: 1px solid #aaa;
 }
 
-.WidgetSlideMenu .m-i--a {
-  background-color: #17602d;
+.WidgetSlideMenu .m-i--a .m-ia{
+  background-color: #f5f5f5;
 }
 
 .WidgetSlideMenu .m-ia {
@@ -64,7 +64,7 @@
 }
 
 .WidgetSlideMenu .m-ia:hover {
-  background-color: #ddd;
+  background-color: #f5f5f5;
   color: #666; 
 }
 
@@ -86,4 +86,18 @@
   top: 0;
   right: 0;
   bottom: 0; 
+}
+
+.WidgetSlideMenu .m-ii--prev{
+  display: block;
+  float : left;
+  text-align: left;
+  width: 1rem;
+  line-height: 2rem;
+  margin-left : -0.5rem;
+}
+
+.WidgetSlideMenu .m-ia--prev-txt{
+  display: block;
+  margin-left: 1.5rem;
 }
