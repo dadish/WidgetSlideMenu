@@ -13,7 +13,7 @@ function isChildActive(Page $p)
 function render_menu(Page $root, $deep = 2, WireData $settings)
 {
   $page = wire('page');
-  if ($page->children->count()) {
+  if ($page->children($settings->include_selector)->count()) {
     $active = $root->id === $page->id;
   } else {
     $active = $root->id === $page->parent->id;
