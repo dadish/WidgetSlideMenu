@@ -46,7 +46,7 @@ class WidgetSlideMenuRenderer {
     $html = "<ul class='m-l ". ($active ? "m-l--a' style='left:0%;'" : "' style='left:100%;'") ." data-page-id='$root'>";
 
     // Add a current root item
-    if ($root->id !== 1) {
+    if ($root->parent->id !== 1) {
     $p = $root->parent;
     $html .= "<li class='m-i m-i--prev ". ($this->isActive($root) ? 'm-i--a' : '') ."' data-page-id='$p'>";
     $html .= "<a class='m-ia m-ia--prev' href='$p->url'><i class='icon-left m-ii--prev'></i> <span class='m-ia--prev-txt'>". $root->get($this->settings->text_field) ."</span></a>";
