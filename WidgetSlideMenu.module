@@ -27,7 +27,7 @@ class WidgetSlideMenu extends Widget implements Module {
   public static function getDefaultSettings()
   {
     return array(
-      'include_selector' => '',
+      'include_selector' => 'in_menu=1',
       'text_field' => 'title',
       'menu_level' => 3
       );
